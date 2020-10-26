@@ -1,0 +1,24 @@
+{% extends "helpingRecruiters/home.html" %}
+{% include "helpingRecruiters/recruiter.html" %}
+{% block content %}
+<div class="container m-5">
+    {% if job %}
+    
+    <div class="card m-2" >
+        <div class="card-body">
+          <h1 class="card-title">{{job.jobtitle}}</h1>
+          <small>Location: {{job.Location}}</small>
+          <p class="text-muted">Company: {{job.CompanyName}} </p><br>
+          <label for="" class="m-3">Job Description:</label>
+
+          <p class="m-2 ml-5">{{job.jDesc}}</p>
+          <label for="" class="m-3">salary:</label>
+          <p class="m-3 ml-5">{{job.salaryDesc}}</p>
+          <label class="m-3" for="">Responsibility:</label>
+          <p class="m-2 ml-5">{{job.resp}}</p>
+
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

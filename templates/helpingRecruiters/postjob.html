@@ -1,0 +1,34 @@
+{% extends "helpingRecruiters/home.html" %}
+{% include "helpingRecruiters/recruiter.html" %}
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="Jobttitle">Job Title  </label>
+            <input type="text" class="form-control" id="Jobttitle" name="Jobtitle" placeholder="Job Title  ">
+        </div>
+      <div class="form-group col-md-6">
+        <label for="CCaame">Company Name </label>
+        <input type="text" class="form-control" id="CCaame" name="CompanyName"  placeholder="Company Name">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="Loc">Company Location </label>
+        <input type="text" class="form-control" id="Loc" name="Location"  placeholder="Company Location ">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="sDesc">Salary Description </label>
+        <input type="text" class="form-control" id="sDesc" name="sDesc"  placeholder="Salary Description ">
+      </div>
+      <div class="form-group col-md-12">
+        <label for="jDesc">Job Description </label>
+        <textarea type="text" class="form-control" id="jDesc" name="jDesc"  placeholder="Job Description "></textarea>
+      </div>
+      <div class="form-group col-md-12">
+        <label for="resp">Responsibilties </label>
+        <textarea type="text" class="form-control" id="resp" name="resp"  placeholder="Job Description "></textarea>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Post</button>
+  </form>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "helpingRecruiters/home.html" %}
+{% include "helpingRecruiters/recruiter.html" %}
+{% block content %}
+<div class="container m-5">
+    <div class="card m-2" >
+        <div class="card-body">
+        <h1 class="card-title">Do you really want to delete</h1>
+          <a class="btn btn-danger" href="{% url 'helpingRecruiters-delete' job.pk %}"> Yes</a>
+          <a class="btn btn-info" href="{% url 'helpingRecruiters-update' job.pk %}"> no</a>
+
+        </div>
+    </div>
+    
+</div>
+{% endblock %}

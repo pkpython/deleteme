@@ -1,0 +1,17 @@
+{% extends "helpingRecruiters/home.html" %}
+{% include "helpingRecruiters/recruiter.html" %}
+{% block content %}
+<div class="container m-5">
+    {% if jobs %}
+    {% for job in jobs %}
+    <div class="card m-2" >
+        <div class="card-body">
+          <a href="{% url 'helpingRecruiters-detail' job.pk %}"><h1 class="card-title">{{job.jobtitle}}</h1></a>
+          <small>{{job.CompanyName}} <br> {{job.Location}}</small>
+          <p>{{job.jDesc|slice:":150"}}...</p>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}
