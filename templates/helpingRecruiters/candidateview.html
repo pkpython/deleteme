@@ -9,9 +9,11 @@
           <a href="{% url 'helpingRecruiters-detail' job.pk %}"><h1 class="card-title">{{job.jobtitle}}</h1></a>
           <small>{{job.CompanyName}} <br> {{job.Location}}</small>
           <p>{{job.jDesc|slice:":150"}}...</p>
+          <a href="{% url 'helpingRecruiters-detail' job.pk %}" class="btn btn-primary">See Recruitement</a>
         </div>
     </div>
     {% endfor %}
     {% endif %}
+    
 </div>
 {% endblock %}

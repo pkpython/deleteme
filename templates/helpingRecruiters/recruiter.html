@@ -28,14 +28,16 @@
             <small>{{job.CompanyName}} <br> {{job.Location}}</small>
             <p>{{job.jDesc|slice:":150"}}...</p>
           </div>
-      </div>
+      
       <div class="m-3">
         <a class="btn btn-primary" href="{%url 'helpingRecruiters-update' job.pk%}">Update</a>
         <a class="btn btn-danger" href="{%url 'helpingRecruiters-confirm-delete' job.pk%}">Delete</a>
       </div>
       {% endfor %}
       {% endif %}
+    </div>
   </div>
+
 
   
 {% endblock %}

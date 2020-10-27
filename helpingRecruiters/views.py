@@ -9,11 +9,13 @@ def home(request):
         password = request.POST.get('password')
         if(user_id=="recruiter@abc.com"):
             jobs = models.newJob.objects.all()
-            return render(request, "helpingRecruiters/recruiter.html" , {"jobs":jobs})
             print("is a recruiter")
+            return render(request, "helpingRecruiters/recruiter.html" , {"jobs":jobs})
         
         elif(user_id == "candidate@abc.com"):
+            jobs = models.newJob.objects.all()
             print("is a consumer")
+            return render(request, "helpingRecruiters/candidateview.html" , {"jobs":jobs})
         
         else:
             print("not authenticated")
@@ -38,12 +40,8 @@ def addNew(request):
         # time.sleep(100000)
         instance = models.newJob(jobtitle= _jobtitle, CompanyName=_CompanyName, Location=_Location, jDesc=_jDesc, resp=_resp, salaryDesc=_salaryDesc,)
         instance.save()
-        return redirect('helpingRecruiters-all')
+        return redirect("helpingRecruiters-recruiterlist")
     return render(request, 'helpingRecruiters/postjob.html')
-
-def index(request):
-    jobs = models.newJob.objects.all()
-    return render(request, "helpingRecruiters/joblist.html", {"jobs":jobs})
 
 def jobdetail(request, pk):
     job = models.newJob.objects.get(pk = pk )
@@ -79,3 +77,19 @@ def jobdelete(request, pk):
     job.delete()
     return redirect('helpingRecruiters-recruiterlist')
     
+def applynow(request, pk):
+    jobdetail = models.newJob.objects.get(pk = pk )
+    jobs = models.newJob.objects.all()
+
+    if request.method == "POST":
+        jobName = jobdetail
+        _candidateName = request.POST.get("CName")
+        _address = request.POST.get("address")
+        _highestQual = request.POST.get("Qual")
+        _skills = request.POST.get("skills")
+        _contact = request.POST.get("contact")
+        instance = models.applied.objects.create(job = jobName, candidateName=_candidateName , address=_address , highestQual=_highestQual , skills=_skills , contact=_contact )
+        instance.save()
+        return render(request, "helpingRecruiters/candidateview.html" , {"jobs":jobs})
+
+    return render(request, "helpingRecruiters/applyjob.html", {"job":jobdetail})

@@ -8,7 +8,9 @@ urlpatterns = [
     path('job/<int:pk>', views.jobdetail, name="helpingRecruiters-detail"),
     path('recruiter/job/update/<int:pk>', views.jobupdate, name="helpingRecruiters-update"),
     path('recruiter/job/delete/<int:pk>', views.jobdelete, name="helpingRecruiters-delete"),
-    path('recruiter/job/confirm/delete/<int:pk>', views.jobdelete, name="helpingRecruiters-confirm-delete"),
-    path('candidate/all/recruitement', views.index, name="helpingRecruiters-all"),
+    path('recruiter/job/confirm/delete/<int:pk>', views.jobdeleteconfirm, name="helpingRecruiters-confirm-delete"),
+    
+    path('candidate/apply/<int:pk>', views.applynow, name="helpingRecruiters-apply"),
+    # path('candidate/all/recruitement', views.index, name="helpingRecruiters-all"),
 
 ]
