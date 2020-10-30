@@ -8,6 +8,7 @@ class newJob(models.Model):
     jDesc = models.CharField(max_length = 100)
     resp = models.CharField(max_length = 100)
     salaryDesc = models.CharField(max_length = 100)
+    postTimeStamp = models.DateTimeField(auto_add_now = True)
 
     def __str__(self):
         return self.jobtitle
@@ -19,6 +20,7 @@ class applied(models.Model):
     highestQual = models.CharField(max_length = 200)
     skills = models.CharField(max_length = 1500)
     contact = models.CharField(max_length = 13)
+    appliedOn = models.DateTimeField(auto_add_now = True)
     
     def __str__(self):
         return self.candidateName
