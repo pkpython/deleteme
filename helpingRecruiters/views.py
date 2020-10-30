@@ -8,13 +8,13 @@ def home(request):
         user_id = request.POST.get('userID')
         password = request.POST.get('password')
         if(user_id=="recruiter@abc.com"):
-            jobs = models.newJob.objects.all()
-            print("is a recruiter")
+            jobs = models.newJob.objects.all().ordered_by('-postTimeStamp')
+#             print("is a recruiter")
             return render(request, "helpingRecruiters/recruiter.html" , {"jobs":jobs})
         
         elif(user_id == "candidate@abc.com"):
             jobs = models.newJob.objects.all()
-            print("is a consumer")
+#             print("is a consumer")
             return render(request, "helpingRecruiters/candidateview.html" , {"jobs":jobs})
         
         else:
@@ -35,8 +35,8 @@ def addNew(request):
         _jDesc = request.POST.get('jDesc')
         _resp = request.POST.get('resp')
         _salaryDesc = request.POST.get('sDesc')
-        print(request.POST)
-        print(_CompanyName," ", _Location, " ", _jDesc, " ", _resp, " ", _salaryDesc)
+#         print(request.POST)
+#         print(_CompanyName," ", _Location, " ", _jDesc, " ", _resp, " ", _salaryDesc)
         # time.sleep(100000)
         instance = models.newJob(jobtitle= _jobtitle, CompanyName=_CompanyName, Location=_Location, jDesc=_jDesc, resp=_resp, salaryDesc=_salaryDesc,)
         instance.save()
